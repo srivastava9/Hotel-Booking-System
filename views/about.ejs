@@ -1,0 +1,12 @@
+<% include index.ejs %>
+
+
+<h2>This is about my self</h2>
+<h3><%= description %></h5>
+<h4><% if(login){ %>
+Welcome <%= name %>
+<% } else { %>
+
+    Welcome Stranger
+<% } %>
+</h6>
