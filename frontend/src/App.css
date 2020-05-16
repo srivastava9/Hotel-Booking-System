@@ -1,3 +1,16 @@
+body{
+  width:80% !important;
+  height:1vh !important;
+  overflow-x: hidden;
+}
+#root{
+ 
+  overflow-x: hidden;
+}
+.form-error{
+  color:red !important;
+  font-size: 14px !important;
+}
 .App {
   text-align: center;
 }

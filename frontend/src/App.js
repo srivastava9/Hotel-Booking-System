@@ -1,23 +1,27 @@
-import React from 'react';
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Route} from "react-router-dom";
-
-import Navbar from "./components/navbar.component"
-import ExercisesList from "./components/exercises-list.component";
-import EditExercise from "./components/edit-exercise.component";
-import CreateExercise from "./components/create-exercise.component";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/navbar.component";
+import RoomsList from "./components/rooms-list.component";
+//import EditExercise from "./components/edit-exercise.component";
+import CreateBooking from "./components/create-booking.component";
 import CreateUser from "./components/create-user.component";
+import CreateRoom from "./components/create-rooms";
+import BookingList from "./components/booking-list";
 
 function App() {
   return (
     <Router>
       <div className="container">
-      <Navbar />
-      <br/>
-      <Route path="/" exact component={ExercisesList} />
-      <Route path="/edit/:id" component={EditExercise} />
-      <Route path="/create" component={CreateExercise} />
-      <Route path="/user" component={CreateUser} />
+        <Navbar />
+        <br />
+        <Route path="/" exact component={RoomsList} />
+
+        <Route path="/create" component={CreateBooking} />
+        <Route path="/add-room" component={CreateRoom} />
+        <Route path="/user" component={CreateUser} />
+        <Route path="/booking" component={BookingList} />
       </div>
     </Router>
   );

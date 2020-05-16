@@ -12,20 +12,28 @@ const Exercise = (props) => (
     <td>{props.room.address}</td>
     {/* <td>{props.room.date.substring(0, 10)}</td> */}
     <td>
-      <Link to={"/edit/" + props.room._id}>edit</Link> |{" "}
+      <Link
+        to={{
+          pathname: "/create/" + props.room.number,
+          state: { roomId: props.room._id },
+        }}
+      >
+        Book
+      </Link>{" "}
+      |{" "}
       <a
         href="#"
         onClick={() => {
-          props.deleteExercise(props.exercise._id);
+          props.deleteExercise(props.room._id);
         }}
       >
-        delete
+        Delete
       </a>
     </td>
   </tr>
 );
 
-export default class ExercisesList extends Component {
+export default class RoomsList extends Component {
   constructor(props) {
     super(props);
 
@@ -51,7 +59,7 @@ export default class ExercisesList extends Component {
     });
 
     this.setState({
-      exercises: this.state.exercises.filter((el) => el._id !== id),
+      rooms: this.state.rooms.filter((el) => el._id !== id),
     });
   }
 

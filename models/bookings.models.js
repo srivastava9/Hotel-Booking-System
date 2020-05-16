@@ -8,7 +8,6 @@ const bookingSchema = new Schema(
   {
     roomId: {
       type: Schema.Types.ObjectId,
-      unique: true,
       required: true,
       ref: "Room",
     },
