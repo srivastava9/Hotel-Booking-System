@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import Notifications, { notify } from "react-notify-toast";
 const Exercise = (props) => (
   <tr>
     <td>{props.room.number}</td>
@@ -55,7 +55,10 @@ export default class RoomsList extends Component {
 
   deleteExercise(id) {
     axios.delete("http://localhost:5000/rooms/" + id).then((response) => {
-      console.log(response.data);
+      notify.show("Room Deleted !", "success", 4000, {
+        background: "#90ee90",
+        text: "#FFFFFF",
+      });
     });
 
     this.setState({
@@ -81,6 +84,7 @@ export default class RoomsList extends Component {
   render() {
     return (
       <div>
+        <Notifications />
         <h3>Available Rooms</h3>
         <table className="table">
           <thead className="thead-light">

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import Notifications, { notify } from "react-notify-toast";
 const Booking = (props) => (
   <tr>
     <td>
@@ -40,7 +40,7 @@ const Booking = (props) => (
       <a
         href="#"
         onClick={() => {
-          props.deleteExercise(props.exercise._id);
+          props.deleteExercise(props.booking._id);
         }}
       >
         Delete Booking
@@ -87,12 +87,15 @@ export default class BookingList extends Component {
   }
 
   deleteExercise(id) {
-    axios.delete("http://localhost:5000/rooms/" + id).then((response) => {
-      console.log(response.data);
+    axios.delete("http://localhost:5000/bookings/" + id).then((response) => {
+      notify.show("Room Added !", "success", 4000, {
+        background: "#90ee90",
+        text: "#FFFFFF",
+      });
     });
 
     this.setState({
-      exercises: this.state.exercises.filter((el) => el._id !== id),
+      bookings: this.state.bookings.filter((el) => el._id !== id),
     });
   }
   bookingList = () => {
@@ -119,31 +122,11 @@ export default class BookingList extends Component {
       }
     });
   };
-  //   bookingList() {
-  //     return this.state.bookings.map((currentbooking) => {
-
-  //       const current_room = this.state.rooms.filter((room) => {
-  //         return room._id == currentbooking.roomId;
-  //       });
-  //       const current_user = this.state.rooms.filter((user) => {
-  //         return user._id == currentbooking.bookedBy;
-  //       });
-
-  //       return (
-  //         <Booking
-  //           booking={currentbooking}
-  //           room={current_room}
-  //           user={current_user}
-  //           deleteExercise={this.deleteExercise}
-  //           key={currentbooking._id}
-  //         />
-  //       );
-  //     });
-  //   }
 
   render() {
     return (
       <div>
+        <Notifications />
         <h3>Bookings List</h3>
         <table className="table">
           <thead className="thead-light">
