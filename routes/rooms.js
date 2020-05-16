@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const Room = require("../models/room.models");
+const Booking = require("../models/bookings.models").Booking;
 /* GET home page. */
 router.route("/").get((req, res) => {
   Room.find()
@@ -31,6 +32,11 @@ router.route("/add").post((req, res) => {
 });
 router.route("/:id").delete((req, res) => {
   Room.findByIdAndRemove(req.params.id)
+    .then(() => {
+      Booking.findOneAndRemove({ roomId: req.params.id }).then(() => {
+        console.log("Booking Removed");
+      });
+    })
     .then(() => {
       res.status(200).json("Room Deleted");
     })
