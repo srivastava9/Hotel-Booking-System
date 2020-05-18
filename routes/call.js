@@ -9,11 +9,11 @@ var client = twilio(
   process.env.TWILIO_AUTH_TOKEN
 );
 router.route("/").post((req, res) => {
-  var number = req.body.salesNumber;
+  var salesNumber = req.body.salesNumber;
   var url =
     "http://" +
     req.headers.host +
-    "/outbound/" +
+    "/call/outbound/" +
     encodeURIComponent(salesNumber);
   var options = {
     to: req.body.number,

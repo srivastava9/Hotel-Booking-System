@@ -88,7 +88,7 @@ export default class CallUser extends Component {
       });
 
     this.setState({
-      username: "",
+      phone1: "",
       phone: "",
       phone_error: "",
       phone_error_bool: false,
@@ -117,10 +117,10 @@ export default class CallUser extends Component {
             <p className="form-error">{this.state.phone_error}</p>
           </div>
           <div className="form-group">
-            <label>Enter Your Phone Number: </label>
+            <label>Enter Sales Phone Number: </label>
             <input
               type="number"
-              name="phone"
+              name="phone1"
               required
               className="form-control"
               value={this.state.phone1}
@@ -134,7 +134,7 @@ export default class CallUser extends Component {
           <div className="form-group">
             <input
               type="submit"
-              value="Create User"
+              value="Create Call"
               className="btn btn-primary"
             />
           </div>
