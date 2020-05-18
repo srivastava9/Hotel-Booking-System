@@ -9,6 +9,7 @@ import CreateBooking from "./components/create-booking.component";
 import CreateUser from "./components/create-user.component";
 import CreateRoom from "./components/create-rooms";
 import BookingList from "./components/booking-list";
+import CallUser from "./components/call";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Navbar />
         <br />
         <Route path="/" exact component={RoomsList} />
-
+        <Route path="/call" component={CallUser} />
         <Route path="/create" component={CreateBooking} />
         <Route path="/add-room" component={CreateRoom} />
         <Route path="/user" component={CreateUser} />

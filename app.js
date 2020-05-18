@@ -11,6 +11,7 @@ const userRouter = require("./routes/users");
 const bookingRouter = require("./routes/bookings");
 const indexRouter = require("./routes/index");
 const roomRouter = require("./routes/rooms");
+const callRouter = require("./routes/call");
 const app = express();
 
 // view engine setup
@@ -37,6 +38,7 @@ app.use("/", indexRouter);
 app.use("/users", userRouter);
 app.use("/rooms", roomRouter);
 app.use("/bookings", bookingRouter);
+app.use("/call", callRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
